@@ -17,6 +17,11 @@ object WM: TWM
       Name = 'DefaultAction'
       PathInfo = '/'
       OnAction = WebModuleDefaultAction
+    end
+    item
+      Name = 'actDateTime'
+      PathInfo = '/pageDateTime'
+      Producer = pageDateTime
     end>
   BeforeDispatch = WebModuleBeforeDispatch
   Height = 333
@@ -101,5 +106,13 @@ object WM: TWM
     Server = DSServer1
     Left = 208
     Top = 248
+  end
+  object pageDateTime: TPageProducer
+    HTMLFile = 
+      'C:\Users\Lucas\Projetos\Delphi\ESTUDO\Aplica'#231#245'es Multicamadas\RE' +
+      'ST\ServidorREST\templates\DateTimePage.html'
+    OnHTMLTag = pageDateTimeHTMLTag
+    Left = 272
+    Top = 184
   end
 end

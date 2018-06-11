@@ -21,6 +21,7 @@ type
     WebFileDispatcher1: TWebFileDispatcher;
     DSProxyGenerator1: TDSProxyGenerator;
     DSServerMetaDataProvider1: TDSServerMetaDataProvider;
+    pageDateTime: TPageProducer;
     procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
     procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
@@ -33,6 +34,8 @@ type
       const AFileName: string; Request: TWebRequest; Response: TWebResponse;
       var Handled: Boolean);
     procedure WebModuleCreate(Sender: TObject);
+    procedure pageDateTimeHTMLTag(Sender: TObject; Tag: TTag;
+      const TagString: string; TagParams: TStrings; var ReplaceText: string);
   private
     { Private declarations }
     FServerFunctionInvokerAction: TWebActionItem;
@@ -55,6 +58,15 @@ procedure TWM.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := uSM.TSM;
+end;
+
+procedure TWM.pageDateTimeHTMLTag(Sender: TObject; Tag: TTag;
+  const TagString: string; TagParams: TStrings; var ReplaceText: string);
+begin
+  if SameText(TagString, 'classname') then
+    ReplaceText := uSM.TSM.ClassName
+  else if SameText(TagString, 'serverfunctionsjs') then
+    ReplaceText := string(Request.InternalScriptName) + '/js/serverfunctions.js';
 end;
 
 procedure TWM.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;

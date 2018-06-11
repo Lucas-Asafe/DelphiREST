@@ -14,6 +14,7 @@ type
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
+    function GetDateTime(): string;
   end;
 
 implementation
@@ -22,11 +23,16 @@ implementation
 {$R *.dfm}
 
 
-uses System.StrUtils;
+uses System.StrUtils, System.DateUtils;
 
 function TSM.EchoString(Value: string): string;
 begin
   Result := Value;
+end;
+
+function TSM.GetDateTime: string;
+begin
+  Result := DateTimeToStr(Now);
 end;
 
 function TSM.ReverseString(Value: string): string;

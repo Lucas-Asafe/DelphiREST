@@ -1,5 +1,6 @@
-// 
+﻿// 
 // Created by the DataSnap proxy generator.
+// 10/06/2018 23:05:46
 // 
 
 function DSAdmin(connectionInfo)
@@ -615,16 +616,16 @@ function DSAdmin(connectionInfo)
   };
 }
 
-function TServerMethods1(connectionInfo)
+function TSM(connectionInfo)
 {
-  this.executor = new ServerFunctionExecutor("TServerMethods1",connectionInfo);
+  this.executor = new ServerFunctionExecutor("TSM",connectionInfo);
 
   /*
    * @param Value [in] - Type on server: string
    * @return result - Type on server: string
    */
   this.EchoString = function(Value) {
-    var returnObject = this.executor.executeMethod("EchoString", "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
+    var returnObject = this.executor.executeMethod('EchoString', "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
     if (arguments[1] == null) {
       if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
         var resultArray = returnObject.result;
@@ -646,7 +647,7 @@ function TServerMethods1(connectionInfo)
    * @return result - Type on server: string
    */
   this.ReverseString = function(Value) {
-    var returnObject = this.executor.executeMethod("ReverseString", "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
+    var returnObject = this.executor.executeMethod('ReverseString', "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
     if (arguments[1] == null) {
       if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
         var resultArray = returnObject.result;
@@ -662,10 +663,30 @@ function TServerMethods1(connectionInfo)
   this.ReverseString_URL = function(Value) {
     return this.executor.getMethodURL("ReverseString", "GET", [Value], arguments[1])[0];
   };
+
+  /*
+   * @return result - Type on server: string
+   */
+  this.GetDateTime = function() {
+    var returnObject = this.executor.executeMethod('GetDateTime', "GET", [], arguments[0], true, arguments[1], arguments[2]);
+    if (arguments[0] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.result = resultArray[0];
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.GetDateTime_URL = function() {
+    return this.executor.getMethodURL("GetDateTime", "GET", [], arguments[0])[0];
+  };
 }
 
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
-  "TServerMethods1": ["EchoString","ReverseString"]
+  "TSM": ["EchoString","ReverseString","GetDateTime"]
 };
 

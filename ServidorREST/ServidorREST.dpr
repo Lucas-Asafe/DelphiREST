@@ -7,7 +7,7 @@ uses
   Vcl.Forms,
   Web.WebReq,
   IdHTTPWebBrokerBridge,
-  ufrmPrincipal in 'ufrmPrincipal.pas' {Form1},
+  ufrmPrincipal in 'ufrmPrincipal.pas' {frmPrincipal},
   uSM in 'uSM.pas' {SM: TDSServerModule},
   uWM in 'uWM.pas' {WM: TWebModule};
 
@@ -17,6 +17,6 @@ begin
   if WebRequestHandler <> nil then
     WebRequestHandler.WebModuleClass := WebModuleClass;
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.

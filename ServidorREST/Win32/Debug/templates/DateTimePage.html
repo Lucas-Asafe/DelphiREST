@@ -1,0 +1,41 @@
+<!-- !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" -->
+<html>
+<head>
+<title>DataSnap REST Project
+</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript" src="js/base64.js"></script>
+<script type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript" src="js/serverfunctionexecutor.js"></script>
+<script type="text/javascript" src="js/connection.js"></script>
+<script type="text/javascript" src="<#serverfunctionsjs>"></script>
+<script type="text/javascript">
+
+function serverMethods()
+{
+  return new <#classname>(connectionInfo);
+}
+
+function onGetDateTimeClick()
+{
+  var valueField = document.getElementById('valueField');
+  var s = serverMethods().GetDateTime();
+  valueField.value = s.result;
+}
+
+</script>
+</head>
+<body>
+    <h1>DataSnap REST Project
+</h1>
+    <div id="contentdiv" class="contentdiv">
+      <table>
+        <tr>
+          <td><input id="valueField" class="loginField" style="HEIGHT: 22px; WIDTH: 214px" size="25" /></td>
+          <td><button onclick="javascript:onGetDateTimeClick();">GetDateTime
+</button></td>
+        </tr>
+      </table>
+    </div>
+</body>
+</html>
